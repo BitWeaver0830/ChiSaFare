@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./scripts/head_footer.js"></script>
+    <script src="./scripts/dashboard-professional.js"></script>
+
+
+    <title>Profilo personale</title>
+
+</head>
+
+<body>
+
+    <main class="profilo-main bg-linear ">
+
+        <!-- HEADER -->
+        <div id="header"></div>
+
+
+        <div class="container d-flex justify-content-center align-items-center h-100">
+
+            <div class="card p-4 m-4 w-100">
+
+                <h4>Benvenuto nella tua pagina personale<br><span id="userName"></span></h4>
+
+
+                    
+                <div class="d-md-flex align-items-center my-5">
+                    <h4>I tuoi profili</h4>
+                <a id="profile-user" class="cta cta-purple mx-4" href="">
+                    <h5>Profilo per Utenti</h5>
+                </a>
+                <a id="profile-social" class="cta cta-borded-purple ms-4" href="">
+                    <h5>Profilo Area Social</h5>
+                </a>
+                </div>
+
+
+                <a id="logout" class="mt-5" href="">
+                    <h5>Effettua il Logout</h5>
+                </a>
+
+
+            </div> <!-- fine CARD -->
+
+
+        </div> <!-- fine CONTAINER -->
+
+
+        <div id="footer"></div>
+        
+    </main>
+
+
+
+</body>
+
+</html>

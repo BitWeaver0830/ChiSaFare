@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- MAPPE -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./scripts/head_footer.js"></script>
+    <script src="./scripts/profilo-azienda.js"></script>
+
+
+
+    <title>Profilo</title>
+
+</head>
+
+<body>
+
+    <main class="profilo-main bg-linear">
+
+        <!-- HEADER -->
+        <div id="header"></div>
+
+        <div class="container">
+
+            <div class="profilo-div my-5">
+
+                <!-- INTRO -->
+                <div class="bg-purple p-4">
+                    <h2 class="data-ragioneSociale"></h2>
+                </div>
+                <div class="bg-white p-4">
+                    <!-- PROFILO INDICAZIONI -->
+                    <div class="profilo-indicazioni ">
+
+                        <p class="semi-bold data-category mt-1">
+                        </p>
+
+
+                        <div class="d-flex my-2">
+                            <img src="./images/icon-navigation.svg" alt="" class="custom-icon-double me-1">
+                            <p class="semi-bold azienda-indirizzo data-indirizzo"></p>
+                        </div>
+
+                    </div><!-- fine PROFILO INDICAZIONI -->
+
+                    <!-- foto e descrizione -->
+                    <div class="d-md-flex my-3">
+                        <div class="profilo-image-container">
+                            <img src="" class="data-profilePic" alt="">
+                        </div>
+                        <div
+                            class="profilo-copy-container d-flex flex-column justify-content-between py-2 py-md-0 px-md-4">
+                            <p id="data-intro"></p>
+
+                            <!-- ctas -->
+                            <div class="row my-2 mb-md-0">
+                                <div class="col-6 col-lg-3 d-flex justify-content-center cta cta-purple my-1">
+                                    <p class="semi-bold text-center  w-100">
+                                        <a href="" type="button" class="text-white semi-bold" data-bs-toggle="modal"
+                                            data-bs-target="#contattaModal">
+                                            Contatta</a>
+                                    </p>
+                                </div>
+                                <div
+                                    class="save-pro  col-6  col-lg-3  order-lg-2 d-flex justify-content-center cta cta-borded-purple my-1">
+                                    <p class="semi-bold text-center w-100">Salva</p>
+                                </div>
+                                <div class="col-12  col-lg-6  d-flex justify-content-center cta cta-purple my-1">
+                                    <p class="semi-bold text-center w-100"><a href=""
+                                            class="text-white semi-bold data-indicazioni">Ottieni Indicazioni</a></p>
+                                </div>
+                            </div>
+
+                            <!-- fine ctas -->
+
+                        </div>
+                    </div> <!-- fine foto e descrizione -->
+
+                </div>
+                <!-- fine INTRO -->
+
+                <!-- REQUISITI MOBILE -->
+                <div class="bg-purple d-md-none p-4">
+
+                        <h3 class="header-requisiti d-md-none">Requisiti</h3>
+
+                </div>
+                <div class="bg-white p-4 d-md-none">
+                    <div class="row">
+                        <!-- REQUISITI -->
+                        <div class="profilo-requisiti">
+
+                            <div class="d-flex align-items-center">
+                                <img alt="" class="custom-icon-double data-durc me-2 my-2">
+                                <p class="semi-bold">DURC</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img alt="" class="custom-icon-double data-visura me-2 my-2">
+                                <p class="semi-bold">Visura</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img alt="" class="custom-icon-double data-assicurazione me-2 my-2">
+                                <p class="semi-bold">Assicurazione</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECENSIONI E SU DI NOI -->
+                <div class="bg-purple row p-4">
+                    <div class="col-12 col-md-8">
+                        <div class="d-flex align-items-center">
+                            <h3>Recensioni</h3>
+                            <div class="d-flex mx-4 align-items-center">
+                                <img src="./images/icon-star-gold.svg" alt="" class="custom-icon">
+                                <p class="semi-bold data-averageReviews"></p>
+                            </div>
+                            <a href="" type="button" data-bs-toggle="modal" data-bs-target="#recensioniModal">
+                                <p class="text-decoration-underline">Vedi tutte le recensioni</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h3 class="header-requisiti d-none d-md-block">Requisiti</h3>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4">
+                    <div class="row">
+                        <div class="col-12 col-md-8 profilo-recensioni data-reviews"></div>
+                        <!-- REQUISITI -->
+                        <div class="col-4 profilo-requisiti d-none d-md-block">
+                            <div>
+                                <div class="d-flex align-items-center">
+                                    <img alt="" class="custom-icon-double data-durc me-2 my-2">
+                                    <p class="semi-bold">DURC</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img alt="" class="custom-icon-double data-visura me-2 my-2">
+                                    <p class="semi-bold">Visura</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img alt="" class="custom-icon-double data-assicurazione me-2 my-2">
+                                    <p class="semi-bold">Assicurazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fine RECENSIONI E SU DI NOI -->
+
+
+
+
+                <!-- SU DI NOI -->
+                <div class="bg-purple p-4">
+                    <h3>Su di Noi</h3>
+                </div>
+                <div class="bg-white p-4">
+
+                    <div class="p-lg-5">
+
+                        <div id="sudinoi-carousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#sudinoi-carousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#sudinoi-carousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+
+                        <div class="my-4">
+                            <p class="sudinoi-copy data-aboutUsCopy"></p>
+                        </div>
+
+                    </div>
+
+                </div><!-- fine SU DI NOI -->
+
+
+                <!-- SPECIALIZZAZIONI -->
+                <div class="bg-purple p-4">
+                    <h3>Specializzazioni</h3>
+                </div>
+
+                <div class="bg-white p-3 p-lg-5">
+
+
+                    <!-- specializzazioni-secondaryGallery  -->
+                    <div id="specializzazioni-carousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#specializzazioni-carousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#specializzazioni-carousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div> <!-- fine specializzazioni-secondaryGallery -->
+
+
+
+                </div>
+                <!-- fine SPECIALIZZAZIONI -->
+
+
+                <!-- DOVE TROVARCI -->
+                <div class="bg-purple p-4">
+                    <h3>Dove trovarci</h3>
+                </div>
+
+                <div class="bg-white p-4">
+
+                    <h4 class="data-ragioneSociale"></h4>
+
+                    <!-- PROFILO INDICAZIONI -->
+                    <div class="profilo-indicazioni">
+                        <p class="semi-bold data-category mt-2"></p>
+                        <div class="d-flex my-2">
+                            <img src="./images/icon-navigation.svg" alt="" class="custom-icon-double me-1">
+                            <p class="semi-bold azienda-indirizzo data-indirizzo">
+                            </p>
+                        </div>
+
+                    </div><!-- fine PROFILO INDICAZIONI -->
+
+                    <!-- ctas -->
+
+                    <div class="row py-2 mb-md-0">
+                        <div class="col-6 col-lg-3 d-flex justify-content-center cta cta-purple my-1">
+                            <p class="semi-bold text-center  w-100">
+                                <a href="" type="button" class="text-white semi-bold" data-bs-toggle="modal"
+                                    data-bs-target="#contattaModal">
+                                    Contatta</a>
+                            </p>
+                        </div>
+                        <div
+                            class="save-pro  col-6  col-lg-3  order-lg-2 d-flex justify-content-center cta cta-borded-purple my-1">
+                            <p class="semi-bold text-center w-100">Salva</p>
+                        </div>
+                        <div class="col-12  col-lg-6  d-flex justify-content-center cta cta-purple my-1">
+                            <p class="semi-bold text-center w-100"><a href=""
+                                    class="text-white semi-bold data-indicazioni">Ottieni Indicazioni</a></p>
+                        </div>
+                    </div>
+
+                    <!-- fine ctas -->
+
+
+                    <!-- mappa -->
+                    <div id="map"></div>
+
+
+                </div>
+
+                <!-- fine DOVE TROVARCI -->
+
+            </div> <!-- fine PROFILO-DIV -->
+
+        </div> <!-- fine CONTAINER -->
+
+
+        <!-- Contatta modal -->
+        <div class="modal fade" id="contattaModal" tabindex="-1" aria-labelledby="contattaModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Contatta Azienda</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Seleziona il metodo che preferisci per contattare l'azienda
+                    </div>
+                    <div class="modal-footer mdModal flex-column">
+                        <a type="button" class="cta cta-borded-purple me-2 md-btn" data-bs-dismiss="modal">
+                            <p class="d-flex text-center justify-content-center align-items-center">Annulla</p>
+                        </a>
+                        <a id="data-telefono" href="" type="button" class="cta cta-purple mx-2">
+                            <p class="d-flex text-center justify-content-center align-items-center">Telefono</p>
+                        </a>
+                        <a id="data-mail" href="" type="button" class="cta cta-purple mx-2">
+                            <p   class="d-flex text-center justify-content-center align-items-center">Email</p>
+                        </a>
+                        <a id="openChat" href="" type="button" class="cta cta-purple ms-2">
+                            <p  class="d-flex text-center justify-content-center align-items-center">Chat</p>
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Recensioni modal -->
+        <div class="modal fade" id="recensioniModal" tabindex="-1" aria-labelledby="recensioniModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tutte le recensioni</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Di seguito trovi tutte le recensioni.</p>
+                        <div class="recensioni-div"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="cta cta-borded-purple me-2" data-bs-dismiss="modal">
+                            <p>Chiudi</p>
+                        </a>
+                        <a id="leave-review" href="" type="button" class="cta cta-purple ms-2">
+                            <p>Lascia Recensione</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer"></div>
+
+    </main>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,3191 @@
+{
+	"info": {
+		"_postman_id": "d8b97b2f-76e9-4a3d-949c-f7a97f52a694",
+		"name": "@LUIGISPS-BOZZA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21261841"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "userSignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cliente\",\r\n    \"lastname\": \"test\",\r\n    \"email\" : \"sonounclienteditest@gmail.com\",\r\n    \"password\" : \"prova\",\r\n    \"securityQuestion\": \"di che colore era il cavallo bianco di Napoleone?\",\r\n    \"securityAnswer\": \"bianco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"sonounclienteditest@gmail.com\",\r\n    \"password\" : \"prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userLogin - with exp token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "sonounclienteditest@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "prova",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"sonounclienteditest@gmail.com\",\r\n    \"password\" : \"prova\",\r\n    \"expiredIn\" : \"20s\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userLogout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "64498cfe604abc289ca66d99",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NDk4Y2ZlNjA0YWJjMjg5Y2E2NmQzNiJ9LCJpYXQiOjE2ODI1NDE4NTcsImV4cCI6MTY4MjYyODI1N30.1k7IBx4iMTV8oW5ZMbUYnEq6uMIQNcRIWazcKDOZjm4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPass",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sonounclienteditest@gmail.com\",\r\n    \"securityQuestion\": \"di che colore era il cavallo bianco di Napoleone?\",\r\n    \"securityAnswer\": \"bianco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resetToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbm91bmNsaWVudGVkaXRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjgzNjMwNDMxLCJleHAiOjE2ODM4MDMyMzF9.xKNVv7gsH1s1kU0GO4miumJgEkQHimJqBlXxNhS9yD8\",\r\n    \"password\": \"prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/setPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"setPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setFavouiriteProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODM4ODkwODIsImV4cCI6MTY4Mzk3NTQ4Mn0.74eKIfqBdok2gj7GC8nHbOOMO4eQWENTvwUavpyeRD4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"professionalID\": \"645ab7d1f4b835372de64d31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/setFavouiriteProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"setFavouiriteProfessional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeFavouiriteProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODM4ODkwODIsImV4cCI6MTY4Mzk3NTQ4Mn0.74eKIfqBdok2gj7GC8nHbOOMO4eQWENTvwUavpyeRD4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"professionalID\": \"645abaef73d93e4ddcd54dac\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/removeFavouiriteProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"removeFavouiriteProfessional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSecurityQuestion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sonounclienteditest@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/getSecurityQuestion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"getSecurityQuestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAccount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "6446ec03fca500a031f4302d",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NDZlYzAzZmNhNTAwYTAzMWY0MzAyZCJ9LCJpYXQiOjE2ODIzNjk1NDksImV4cCI6MTY4MjQ1NTk0OX0.wJgxIkzizq_SCAdRv1mqxKmS4IUcF24zyhjb9y_8qmw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/deleteAccount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"deleteAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfessional",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODM4NzU1NDUsImV4cCI6MTY4Mzk2MTk0NX0.yMCH-Pf_SOAUgQ95BLGvw0kJ6N_Cxcf-xmPUW2nwhh4",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "professionalID",
+								"value": "645d4969358c1ada8c51b1c9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/getProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"getProfessional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODQxNzI3MzMsImV4cCI6MTY4NDI1OTEzM30.oDYdrWqcIDJfpSHDQlh9_-yYUNAXE9GcT-CPzA-GjdI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/getUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"getUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProfessionals",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODM4MjI4MzgsImV4cCI6MTY4MzkwOTIzOH0.riZ0QwUvlMyuHTra8sBU_wyc_9FLiUFnv6flpInxPPQ",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "distance",
+								"value": "500",
+								"description": "in km",
+								"type": "text"
+							},
+							{
+								"key": "lat",
+								"value": "45.0752926",
+								"type": "text"
+							},
+							{
+								"key": "lon",
+								"value": "7.6507494",
+								"type": "text"
+							},
+							{
+								"key": "keyWords",
+								"value": "azienda ditta prova",
+								"type": "text"
+							},
+							{
+								"key": "category",
+								"value": "PREPARAZIONE E CONCIA DEL CUOIO; PREPARAZIONE E TINTURA DI PELLICCE",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "reviewMin",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/getAllProfessionals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"getAllProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAteco Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODM2NDg1MzQsImV4cCI6MTY4MzczNDkzNH0.9gYzlC-XIWSLl5sZpEYKnJG87P6nVFM7vaqAhkYH63g",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/user/getAllAteco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"getAllAteco"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "businessConsultant",
+			"item": [
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "selfCertified",
+									"type": "file",
+									"src": "/C:/Users/donat/Downloads/Receipt-carrefour.pdf"
+								},
+								{
+									"key": "name",
+									"value": "Donato",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Mecca",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "donat.ome.cca15@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "prova",
+									"type": "text"
+								},
+								{
+									"key": "securityQuestion",
+									"value": "di che colore era il cavallo bianco di Napoleone?",
+									"type": "text"
+								},
+								{
+									"key": "securityAnswer",
+									"value": "bianco",
+									"type": "text"
+								},
+								{
+									"key": "pIva",
+									"value": "12345678901",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "indirizzo ",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Torino",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "TO",
+									"type": "text"
+								},
+								{
+									"key": "iban",
+									"value": "IBAN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"donatomecca15@gmail.com\",\r\n    \"password\" : \"prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login - with exp token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"donatomecca15@gmail.com\",\r\n    \"password\" : \"prova\",\r\n    \"expiredIn\" : \"1m\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644abe4700409781a6863b68",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDRhYmU0NzAwNDA5NzgxYTY4NjNiNjgifSwiaWF0IjoxNjgyNjIwMTk2LCJleHAiOjE2ODI3MDY1OTZ9.-Fs-WGaXF9Ca5Z98DCsr3MQz_Gc7-hJbdvrLCgNEzUI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPass",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"donatomecca15@gmail.com\",\r\n    \"securityQuestion\": \"di che colore era il cavallo bianco di Napoleone?\",\r\n    \"securityAnswer\": \"bianco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resetToken\": \"1d736f6ec8ac61506d93bfcc54ffcc1b75ea4a8b89d9b9fa9bad2bfd46698955\",\r\n    \"password\": \"prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/setPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"setPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSecurityQuestion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"donatomecca15@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/getSecurityQuestion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"getSecurityQuestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"professionalID\": \"id professionists!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/setProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"setProfessional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProfessionals",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644abe4700409781a6863b68",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDQ5OGYyZjYwNGFiYzI4OWNhNjZkNDIifSwiaWF0IjoxNjgyNTQzMjUwLCJleHAiOjE2ODI2Mjk2NTB9.JxyJWyqkI0UDd_RCvBSU1yONLGAnvjJCOSem1fyi0XA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/getAllProfessionals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"getAllProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllActiveProfessionals",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/getAllActiveProfessionals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"getAllActiveProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAteco",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644abe4700409781a6863b68",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDRhYmU0NzAwNDA5NzgxYTY4NjNiNjgifSwiaWF0IjoxNjgzNjQ4NDA4LCJleHAiOjE2ODM3MzQ4MDh9.TxU666lHsai30f1pFmOPIkohxRyFNz1dNzQwr6rBtWY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/getAllAteco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"getAllAteco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUnactiveProfessionals",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/getAllProfessionals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"getAllProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644abe4700409781a6863b68",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDRhYmU0NzAwNDA5NzgxYTY4NjNiNjgifSwiaWF0IjoxNjgzODg4MjQwLCJleHAiOjE2ODM5NzQ2NDB9.CQjfG5q1DBorXas_h_wGGhhsPWTwrW9PHVHqjy2iETU",
+								"type": "text"
+							},
+							{
+								"key": "pIva",
+								"value": "12345678910",
+								"description": "pIVA del professionista",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\":{\r\n        \"ragioneSociale\": \"nuovA ragione sociale\",\r\n        \"address\": \"nuovo indirizzo\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/updateProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"updateProfessional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644abe4700409781a6863b68",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDRhYmU0NzAwNDA5NzgxYTY4NjNiNjgifSwiaWF0IjoxNjgzODg4MjQwLCJleHAiOjE2ODM5NzQ2NDB9.CQjfG5q1DBorXas_h_wGGhhsPWTwrW9PHVHqjy2iETU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\":{\r\n        \"pIva\": \"pIva must be present!\",\r\n        \"address\": \"nuovo indirizzo\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/updateFields",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"updateFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSelfCertified",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "6446e13edf71cbd39cd0396a",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDQ2ZTEzZWRmNzFjYmQzOWNkMDM5NmEifSwiaWF0IjoxNjgyMzY5NzQxLCJleHAiOjE2ODI0NTYxNDF9.VivYvOB4xWsosm1lJuThNw20lrXQ-j5Ckq60o4kGNYo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "selfCertified",
+									"type": "file",
+									"src": "/C:/Users/donat/Downloads/Receipt-carrefour.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/updateSelfCertified",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"updateSelfCertified"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAccount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644ab3b66342be21bef8e22e",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDRhYjNiNjYzNDJiZTIxYmVmOGUyMmUifSwiaWF0IjoxNjgyNjE3MzA0LCJleHAiOjE2ODI3MDM3MDR9.KY4euI7wTG8hChdSQhfbj0BrMKJoX2W-v4BB3mczI2Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/deleteAccount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"deleteAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signUpProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "bcID",
+								"value": "644abe4700409781a6863b68",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImJjSUQiOiI2NDRhYmU0NzAwNDA5NzgxYTY4NjNiNjgifSwiaWF0IjoxNjgzODg4MjQwLCJleHAiOjE2ODM5NzQ2NDB9.CQjfG5q1DBorXas_h_wGGhhsPWTwrW9PHVHqjy2iETU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"donato..me.....cca15@gmail.com\",\r\n    \"ragioneSociale\": \"Ditta individuale\",\r\n    \"pIva\": \"12345678\",\r\n    \"address\": \"via di casa mia,18\",\r\n    \"city\": \"Torino\",\r\n    \"province\": \"TO\",\r\n    \"cap\":\"10141\",\r\n    \"ateco\":\"15.11 - PREPARAZIONE E CONCIA DEL CUOIO; PREPARAZIONE E TINTURA DI PELLICCE\",\r\n    \"durcExp\":\"2023-04-28T22:12:15.238+0000\",\r\n    \"visuraExp\":\"2023-04-28T22:12:15.238+0000\",\r\n    \"insuranceExp\": \"2023-04-28T22:12:15.238+0000\",\r\n    \"latitude\": \"\",\r\n    \"longitude\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/businessConsultant/signUpProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"businessConsultant",
+								"signUpProfessional"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "professional",
+			"item": [
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"signUpToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmF0b21lY2NhMTVAZ21haWwuY29tIiwiaWF0IjoxNjgzNzU1NzU2LCJleHAiOjE2ODUwNTE3NTZ9.p9-gsjc3WqcUi12sos4ywpp6fCTuCr47o_LPUZahsuw\",\r\n    \"password\":\"prova\",\r\n    \"number\": \"+391234567890\",\r\n    \"securityQuestion\": \"di che colore era il cavallo bianco di Napoleone?\",\r\n    \"securityAnswer\": \"bianco\",\r\n    \"intro\": \"Introduzione su di me!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"donatomecca15@gmail.com\",\r\n    \"password\" : \"prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadProfilePic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODI2MjIwOTcsImV4cCI6MTY4MjcwODQ5N30.1O8OnzrX7h9fDz1lHs0wgRPb_nN-D7mM_FjPww2B8bs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": "/C:/Users/donat/Downloads/desktop-1600x900.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/uploadProfilePic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"uploadProfilePic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadAboutUs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODI2MjIwOTcsImV4cCI6MTY4MjcwODQ5N30.1O8OnzrX7h9fDz1lHs0wgRPb_nN-D7mM_FjPww2B8bs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "aboutUsGallery",
+									"type": "file",
+									"src": "/C:/Users/donat/Downloads/desktop-1600x900.jpg"
+								},
+								{
+									"key": "specializationsGallery",
+									"type": "file",
+									"src": [
+										"/C:/Users/donat/Downloads/carrefour - Copia.png",
+										"/C:/Users/donat/Downloads/carrefour - Copia (2).png",
+										"/C:/Users/donat/Downloads/carrefour - Copia (3).png",
+										"/C:/Users/donat/Downloads/carrefour - Copia (4).png",
+										"/C:/Users/donat/Downloads/carrefour - Copia (5).png",
+										"/C:/Users/donat/Downloads/carrefour - Copia (6).png"
+									]
+								},
+								{
+									"key": "aboutUsCopy",
+									"value": "prova prova about us copy",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/uploadAboutUs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"uploadAboutUs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "645c12ec15a59d7e54ea3fb3",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NWMxMmVjMTVhNTlkN2U1NGVhM2ZiMyJ9LCJpYXQiOjE2ODM4ODAwMDcsImV4cCI6MTY4Mzk2NjQwN30.68iaaF9q0ugwei7GomAMQ_MwG8nffoxYZzTrdJrRSQA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\":{\r\n        \"email\": \"d.o.n.a.t.o.m.e.c.c.a.1.5.1@gmail.com\",\r\n        \"number\": \"nuovo numero\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/updateFields",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"updateFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login - with exp token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"donatomecca15.0@gmail.com\",\r\n    \"password\" : \"prova\",\r\n    \"expiredIn\" : \"1m\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professionale/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professionale",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPass",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"donatomecca15@gmail.com\",\r\n    \"securityQuestion\": \"di che colore era il cavallo bianco di Napoleone?\",\r\n    \"securityAnswer\": \"bianco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/resetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"resetToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmF0b21lY2NhMTVAZ21haWwuY29tIiwiaWF0IjoxNjgzNjMwOTc5LCJleHAiOjE2ODM4MDM3Nzl9.uPWjW9dhVzXGa02AtaA6sD-nOHUZGzHOu7KEqknsqw8\",\r\n    \"password\": \"prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/setPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"setPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSecurityQuestion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"donato.mecca15@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/getSecurityQuestion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"getSecurityQuestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pIva",
+								"value": "12345678910",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/professional/activate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professional",
+								"activate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "social",
+			"item": [
+				{
+					"name": "createPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/donat/Downloads/CODICEMURALE.jpg"
+								},
+								{
+									"key": "copy",
+									"value": "quinto",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/createPost",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"createPost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "645647c699557b78b9b724a2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/updatePost",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"updatePost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removePost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64564e4958cdfa9586ed1765",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/removePost",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"removePost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setFollowedProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "645c12ec15a59d7e54ea3fb3",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NWMxMmVjMTVhNTlkN2U1NGVhM2ZiMyJ9LCJpYXQiOjE2ODM4ODAwMDcsImV4cCI6MTY4Mzk2NjQwN30.68iaaF9q0ugwei7GomAMQ_MwG8nffoxYZzTrdJrRSQA",
+								"type": "text"
+							},
+							{
+								"key": "professionalID",
+								"value": "645b6c6dc6f95724d115853c",
+								"type": "text",
+								"description": "to set"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/setFollowedProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"setFollowedProfessional"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowedPosts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getFollowedPosts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getFollowedPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowingProfessionals",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "pID",
+								"value": "645c12ec15a59d7e54ea3fb3",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NWMxMmVjMTVhNTlkN2U1NGVhM2ZiMyJ9LCJpYXQiOjE2ODM4ODAwMDcsImV4cCI6MTY4Mzk2NjQwN30.68iaaF9q0ugwei7GomAMQ_MwG8nffoxYZzTrdJrRSQA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getFollowingProfessionals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getFollowingProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64563bf8ce6df913373ea395",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"commento di prova\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/addComment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"addComment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getComments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64563bf8ce6df913373ea395",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getComments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getComments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addLike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64563bf8ce6df913373ea395",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/addLike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"addLike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLikes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64563bf8ce6df913373ea395",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getLikes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getLikes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeLike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64563bf8ce6df913373ea395",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/removeLike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"removeLike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							},
+							{
+								"key": "postID",
+								"value": "64563bf8ce6df913373ea395",
+								"type": "text"
+							},
+							{
+								"key": "commentID",
+								"value": "6456680ac31951faf3819164",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/removeComment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"removeComment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOnePost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postID\":\"64563a21a8633b27118183de\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getOnePost",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getOnePost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllPosts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODMzNjk4NzgsImV4cCI6MTY4MzQ1NjI3OH0.VgprfYrDqMr1-oqhQYo83vWefn7suIxQJZcraMOPNr0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from\": 10,\r\n    \"num\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getAllPosts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getAllPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addReview",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODQxNzI3MzMsImV4cCI6MTY4NDI1OTEzM30.oDYdrWqcIDJfpSHDQlh9_-yYUNAXE9GcT-CPzA-GjdI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"professionalID\": \"645d4969358c1ada8c51b1c9\",\r\n    \"vote\": 5,\r\n    \"text\": \"ottimo professionista!!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/addReview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"addReview"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeReview",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODQxNzI3MzMsImV4cCI6MTY4NDI1OTEzM30.oDYdrWqcIDJfpSHDQlh9_-yYUNAXE9GcT-CPzA-GjdI",
+								"type": "text"
+							},
+							{
+								"key": "reviewID",
+								"value": "6460f45932a5687dad536763",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/removeReview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"removeReview"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfessional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "pID",
+								"value": "644ac45830bac4b2cf89878b",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InBJRCI6IjY0NGFjNDU4MzBiYWM0YjJjZjg5ODc4YiJ9LCJpYXQiOjE2ODM1NjE3OTcsImV4cCI6MTY4MzY0ODE5N30.UCyNyliIXa5kNtHopCFv056r4ui2KKY-33hsYhpMAyA",
+								"type": "text"
+							},
+							{
+								"key": "professionalID",
+								"value": "644ac1bbf76e78035336e3b6",
+								"description": "to get info",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/social/getProfessional",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"social",
+								"getProfessional"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "setOwner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/setOwner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"setOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ownerSendLoginToken",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "sonoamministratoreditest@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "n?3WAw@Wf4^h8C^FG7^#9r!Ky+PC5eSt",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/ownerSendLoginToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"ownerSendLoginToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ownerLogin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "loginToken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbm9hbW1pbmlzdHJhdG9yZWRpdGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2ODQxNzE3NzksImV4cCI6MTY4NDE3MjM3OX0.Tp_49FNH1D8GWVQ343U2XTIJ5Tc7C1zlF12zaq5mOgc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/ownerLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"ownerLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ownerLogin with expiration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "sonoamministratoreditest@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "n?3WAw@Wf4^h8C^FG7^#9r!Ky+PC5eSt",
+								"type": "text"
+							},
+							{
+								"key": "loginToken",
+								"value": "632f9b3549d452853ac9ad1d0e8f1be51a26e65739e0e6f9a9ca4e7e74dd9e31",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"expiredIn\":\"1m\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/ownerLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"ownerLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ownerLogout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "6449a90d1961f41120f0ed89",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NDlhOTBkMTk2MWY0MTEyMGYwZWQ4OSJ9LCJpYXQiOjE2ODI1NTA1NzksImV4cCI6MTY4MjYzNjk3OX0.2cvYxJoEGKrZBp4kuhf_EKeJgPFsQ0d9Cddnw9iHA7I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/ownerLogout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"ownerLogout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setStaff",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "6449a90d1961f41120f0ed89",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NDlhOTBkMTk2MWY0MTEyMGYwZWQ4OSJ9LCJpYXQiOjE2ODI2MjI2NjMsImV4cCI6MTY4MjcwOTA2M30.718-ONkequzeh223g6Yk5LYSjHv8CaQ0bhGuDTQewfI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"staffMail\": \"donatomecca15@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/setStaff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"setStaff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllStaff",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "6449a90d1961f41120f0ed89",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NDlhOTBkMTk2MWY0MTEyMGYwZWQ4OSJ9LCJpYXQiOjE2ODI2MTI2ODcsImV4cCI6MTY4MjY5OTA4N30.sgI2POBENmtkBESxFzNfkJTpXZdW7lRlmQRuqZKffIc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/getAllStaff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"getAllStaff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getWithoutBusinessConsultant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "6449a90d1961f41120f0ed89",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NDlhOTBkMTk2MWY0MTEyMGYwZWQ4OSJ9LCJpYXQiOjE2ODI2MjI2NjMsImV4cCI6MTY4MjcwOTA2M30.718-ONkequzeh223g6Yk5LYSjHv8CaQ0bhGuDTQewfI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/getWithoutBusinessConsultant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"getWithoutBusinessConsultant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeStaff",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "6449a90d1961f41120f0ed89",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NDlhOTBkMTk2MWY0MTEyMGYwZWQ4OSJ9LCJpYXQiOjE2ODI2MTI2ODcsImV4cCI6MTY4MjY5OTA4N30.sgI2POBENmtkBESxFzNfkJTpXZdW7lRlmQRuqZKffIc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sID\": \"644aa2616fecf576fb284ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/removeStaff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"removeStaff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staffSignUp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "signUpToken",
+								"value": "956a1a651848b255f8d7cc6bed02e3d313715d450e3f8cccd6975177f3ee0ea7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"donatomecca15@gmail.com\",\r\n    \"password\": \"prova\",\r\n    \"securityQuestion\": \"di che colore è il cavallo bianco di Napoleone?\",\r\n    \"securityAnswer\": \"bianco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/staffSignUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"staffSignUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staffLogin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "donatomecca15@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "prova",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/staffLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"staffLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staffLogout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644aa8b274cd5d028c66f5fb",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFhOGIyNzRjZDVkMDI4YzY2ZjVmYiJ9LCJpYXQiOjE2ODI2MTU2NzUsImV4cCI6MTY4MjcwMjA3NX0.F4btswdSPA006E9NpZsM_t-4to1tar6UmtztfDDSOjE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/staffLogout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"staffLogout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staffResetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "donatomecca15@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "securityQuestion",
+								"value": "di che colore è il cavallo bianco di Napoleone?",
+								"type": "text"
+							},
+							{
+								"key": "securityAnswer",
+								"value": "bianco",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/staffResetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"staffResetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staffSetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "password",
+								"value": "prova",
+								"type": "text"
+							},
+							{
+								"key": "resetToken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmF0b21lY2NhMTVAZ21haWwuY29tIiwiaWF0IjoxNjg0MTcxNzI0LCJleHAiOjE2ODQzNDQ1MjR9.OfuMkJAOXia6r-1aWMzWIUNoQcz5cGEDaNH-OWto5vs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/staffSetPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"staffSetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAteco",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODM2NDg1MzQsImV4cCI6MTY4MzczNDkzNH0.9gYzlC-XIWSLl5sZpEYKnJG87P6nVFM7vaqAhkYH63g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/getAllAteco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"getAllAteco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSecurityQuestion",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "donatomecca15@gmail.com",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/admin/getStaffSecurityQuestion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"getStaffSecurityQuestion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "getAllProfessionals",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							},
+							{
+								"key": "status",
+								"value": "da saldare",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getAllProfessionals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getAllProfessionals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfessionalsPerDate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							},
+							{
+								"key": "from",
+								"value": "2023-04-14T17:41:54+02:00",
+								"description": "yyyy-mm-ddThh:mm:ss+00:00",
+								"type": "text"
+							},
+							{
+								"key": "to",
+								"value": "2023-05-14T17:41:54+02:00",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getProfessionalsPerDate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getProfessionalsPerDate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllIncomeInInterval",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							},
+							{
+								"key": "from",
+								"value": "2023-04-14T17:41:54+02:00",
+								"type": "text"
+							},
+							{
+								"key": "to",
+								"value": "2023-05-14T17:41:54+02:00",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getAllIncomeInInterval",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getAllIncomeInInterval"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAnnualIncome",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getAnnualIncome",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getAnnualIncome"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAmountToPay",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getAmountToPay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getAmountToPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMostPerformantAteco",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getMostPerformantAteco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getMostPerformantAteco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllBusinessConsultants",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							},
+							{
+								"key": "from",
+								"value": "2023-04-14T17:41:54+02:00",
+								"type": "text"
+							},
+							{
+								"key": "to",
+								"value": "2023-05-14T17:41:54+02:00",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getAllBusinessConsultants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getAllBusinessConsultants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAndGenerateReport",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "aID",
+								"value": "644ac8ee30bac4b2cf8987a8",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImFJRCI6IjY0NGFjOGVlMzBiYWM0YjJjZjg5ODdhOCJ9LCJpYXQiOjE2ODQwNzcyOTgsImV4cCI6MTY4NDE2MzY5OH0.JQHL5v8OvhXzTNKJxQiEJkgCW-mN7HkUv9ILnnE2M_U",
+								"type": "text"
+							},
+							{
+								"key": "from",
+								"value": "2023-04-14T17:41:54+02:00",
+								"type": "text"
+							},
+							{
+								"key": "to",
+								"value": "2023-05-14T17:41:54+02:00",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/dashboard/getAndGenerateReport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"dashboard",
+								"getAndGenerateReport"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "getChat",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text",
+								"description": "for auth -> userID or professionalID"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJRCI6IjY0NWQwNDBhMmJlYjIyZGZhN2JlMjk2OSJ9LCJpYXQiOjE2ODQwOTU0ODgsImV4cCI6MTY4NDE4MTg4OH0.2IcqK7UQr8okfoWTsAJj2v_OvDpLrUxX_WB_zvrzkjU",
+								"type": "text",
+								"description": "for auth"
+							},
+							{
+								"key": "uID",
+								"value": "645d040a2beb22dfa7be2969",
+								"type": "text"
+							},
+							{
+								"key": "pID",
+								"value": "645e4ee49b1a1e3703334fe1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://csf-d4e5f83e9142.herokuapp.com/api/chat/getChat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"chat",
+								"getChat"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

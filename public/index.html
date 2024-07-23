@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP-->
+
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./scripts/home.js"></script>
+    <title>Chi Sa Fare</title>
+</head>
+
+<body>
+
+    <main class="home bg-linear">
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid py-3 px-4">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between py-4 py-md-0" id="navbarNav">
+                    <a class="nav-link active my-3 my-md-0" aria-current="page" href="ricerca-servizi.html">
+                        <h4>Ricerca Servizi</h4>
+                    </a>
+                    <a class="nav-link my-3 my-md-0" href="chi-siamo.html">
+                        <h4>Chi siamo</h4>
+                    </a>
+                    <div class="nav-item">
+                        <a class="nav-link"
+                            aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                            <span class="d-inline me-2 text-gray-600 small">Accedi</span>
+                        </a>
+                        <div class="dropdown-menu shadow dropdown-menu-end">
+                            <a class="dropdown-item" href="login.html">
+                                <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Utente
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="dashboard/login.html">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Consulente
+                            </a>
+                        </div>
+                    </div>
+                    <a id="profileRoute" href="" class="me-4">
+                        <h4>Area riservata</h4>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- fine NAVBAR -->
+
+
+        <!-- main hero -->
+        <section class="hero bg-darkPurple">
+            <div class="hero-positioning">
+                <img id="hero-img" src="" alt="">
+                <div class="hero-searchForm p-4 p-lg-0">
+                    <form action="" id="home-search" class="">
+                        <div class="input-positioning">
+                            <input id="search-categoria" type="text" class="" placeholder="Di cosa hai bisogno oggi?">
+                            <img src="./images/icon-search.svg" class="custom-icon" alt="">
+                        </div>
+                        <div class="input-positioning my-3">
+                            <input id="search-location" type="text" class="" placeholder="Dove?">
+                            <img src="./images/icon-position.svg" class="custom-icon" alt="">
+                            <ul id="search-suggestions" class="border-0"></ul>
+                        </div>
+                        <div class="d-flex justify-content-center d-lg-none">
+                            <button href="" type="submit" class="cta cta-borded">
+                                <h4>Cerca Ora</h4>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section><!-- fine main hero -->
+
+        <!--  home footer -->
+        <section class="bg-darkPurple p-4">
+
+            <div class="row">
+
+                <div class="col-12 col-md-3">
+
+                    <div>
+                        <a href="login.html">Home</a>
+                    </div>
+                    <div>
+                        <a href="chi-siamo.html">Chi Siamo</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div>
+                        <a href="dashboard-personale.html">Profilo</a>
+                    </div>
+                    <div>
+                        <a href="ricerca-servizi.html">Ricerca Professionisti</a>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center mt-3">Chi sa fare - 2023® P.Iva : 1019321011</p>
+
+        </section> <!-- fine home footer -->
+
+
+    </main>
+
+
+
+</body>
+
+</html>

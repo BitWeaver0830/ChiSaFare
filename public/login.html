@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./scripts/head_footer.js"></script>
+    <script src="./scripts/login.js"></script>
+
+    <title>Chi Sa Fare</title>
+</head>
+
+<body>
+
+    <main class="login bg-linear">
+
+        <!-- NAVBAR -->
+        <div id="header"></div>
+
+        <!-- CONTENUTO PAGINA -->
+        <div class="d-flex justify-content-center align-items-center ">
+            <div class="card m-5 p-5 d-flex flex-column align-items-center">
+                <h4>Effettua il login</h4>
+                <form id="form-login" class="d-flex flex-column align-items-center" action="">
+                    <label for="email" class="mt-3">
+                        <input id="email" type="email" name="email" placeholder="Email" >
+                    </label>
+                    <label for="password" class="mt-3">
+                        <input id="password" type="password" name="password" placeholder="Password">
+                    </label>
+                    <button id="btn-login" class="cta cta-purple mt-3" type="submit"><p>Login</p></button>
+                </form>
+                <div class="error-login"></div>
+                <a href="reset-password.html" class="mt-3"><p>Password dimenticata?</p></a>
+                <a href="signup.html" class="mt-1"><p>Non hai un account? <span class="text-decoration-underline">Registrati</span></p></a>
+            </div>
+        </div>
+
+    </main>
+
+
+
+</body>
+
+</html>

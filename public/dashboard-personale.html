@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="./styles/bootstrap.min.css">
+  <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+  <!-- INCLUSIONI CUSTOM -->
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <script src="./scripts/head_footer.js"></script>
+  <script src="./scripts/dashboard-personale.js"></script>
+
+
+  <title>Profilo personale</title>
+
+</head>
+
+<body>
+
+  <main class="dashboard-main bg-linear">
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <div class="container d-flex justify-content-center align-items-center">
+
+      <div class="card p-4 mt-4">
+
+        <h4>Benvenuto nella tua pagina personale <span id="userName">NOME</span></h4>
+
+        <h5 class="mt-4">Professionisti Salvati:</h5>
+        <div id="favouriteProfessionals"></div>
+
+
+        <hr>
+        <a id="logout" class="mt-3" href="">
+          <h5>Logout</h5>
+        </a>
+
+        <!-- Button trigger modal -->
+        <a type="button" class="mt-3" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+          <h5 class="text-danger-emphasis ">Elimina Account</h5>
+        </a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="delete Account"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Account</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h5>ATTENZIONE! Stai per eliminare il tuo account. Vuoi procedere?</h5>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <button type="button" class="btn btn-danger" id="deleteAccount">Elimina Account</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div> <!-- fine CARD -->
+
+
+    </div> <!-- fine CONTAINER -->
+
+
+    <div id="footer"></div>
+
+  </main>
+
+
+
+</body>
+
+</html>

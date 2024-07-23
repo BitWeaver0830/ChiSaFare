@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Chi Sa Fare</title>
+    <meta name="description" content="Pannello di controllo Chi Sa Fare">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/checkLogin.js"></script>
+    <script src="./assets/js/tableQueries.js"></script>
+    <script src="./assets/js/generateReport.js"></script>
+</head>
+
+<script>
+    $(document).ready(function () {
+        if (localStorage.getItem("type") == "businessConsultant")
+            window.location.href = "professionisti.html";
+    });
+</script>
+
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav id="header" class="navbar navbar-dark align-items-start sidebar accordion bg-custom p-0">
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav id="topPage" class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Database</h3>
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Filtri</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center my-2">
+                                    <p class="my-0 me-2">Categorie:</p>
+                                    <select id="ricerca-categoria">
+
+                                    </select>
+                                </div>
+                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block bg-custom d-none d-md-block custom-button"
+                                    type="button" data-bs-toggle="modal" data-bs-target="#generateReportModal"
+                                    role="button" href="#">
+                                    <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Genera Report</a>
+                            </div>
+                            <div class="input-group my-2"><input class="form-control small" type="text"
+                                    placeholder="Cerca per.."></div>
+                        </div>
+                    </div>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Risultati</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Ruolo</th>
+                                            <th>Luogo</th>
+                                            <th>Email</th>
+                                            <th>P.Iva</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody"></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Nome</strong></td>
+                                            <td><strong>Ruolo</strong></td>
+                                            <td><strong>Luogo</strong></td>
+                                            <td><strong>Email</strong></td>
+                                            <td><strong>P.Iva</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div id="tableNavigator" class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                        Mostrando da <span class="currentResultsRange"></span> di <span
+                                            class="allResults"></span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav
+                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Chi Sa Fare 2023</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+
+
+
+    <!-- GenerateReportModal -->
+    <div class="modal fade" id="generateReportModal" tabindex="-1" aria-labelledby="generateReportModal"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Genera Report</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="my-3">
+                        <p>Per generare il report inserisci due date e premi il tasto genera report</p>
+                    </div>
+                    <div class="my-3">
+                        <form class="reportDates">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="date" id="dateStart" name="dateStart"
+                                    placeholder="Data inizio" />
+                                <label for="dateStart">Data inizio</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="date" id="dateEnd" name="dateEnd"
+                                    placeholder="Data fine" />
+                                <label for="dateEnd">Data fine</label>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button id="generateReport" type="button" class="btn btn-primary">Genera Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- previewContentModal -->
+    <div class="modal fade" id="previewDataModal" tabindex="-1" aria-labelledby="previewDataModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-dark" id="previewDataModalLabel">Genera Report</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p>...</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

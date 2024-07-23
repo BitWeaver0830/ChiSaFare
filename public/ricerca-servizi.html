@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./scripts/head_footer.js"></script>
+    <script src="./scripts/ricerca.js"></script>
+
+
+    <title>Chi Sa Fare</title>
+</head>
+
+<body>
+
+    <main class="ricerca_servizi-main bg-linear">
+
+        <!-- HEADER -->
+        <div id="header"></div>
+
+        <section id="ricerca_servizi" class="m-3 p-4 m-md-5 p-md-5 d-flex flex-column">
+
+            <h2 class="bold mb-3 mb-md-5">
+                Ricerca Servizi
+            </h2>
+
+            <form action="" id="form_ricerca_servizi" class="opzioni_filtri">
+
+                <div class="row">
+
+                    <div class="col-12 col-lg-3 custom-select">
+                        <select name="Recensioni" id="select-recensioni" class="w-100">
+                            <option value="Default" selected>Recensioni</option>
+                            <option value="1">Più di 1 stelle</option>
+                            <option value="2">Più di 2 stelle</option>
+                            <option value="3">Più di 3 stelle</option>
+                            <option value="4">Più di 4 stelle</option>
+                            <option value="5">Solo 5 stelle</option>
+                        </select>
+                        <span><img src="./images/icon-select.svg" alt=""></span>
+                    </div>
+                    <div class="col-12 col-lg-6 custom-input">
+                        <input id="search-location" class="w-100 ps-5" type="text" placeholder="Dove?" required>
+                        <span><img src="./images/icon-position.svg" alt=""></span>
+                        <ul id="search-suggestions" class="border-0"></ul>
+                    </div>
+                    <div class="col-12 col-lg-3 ">
+                        <!-- range -->
+                        <div class="w-100 h-100 d-flex justify-content-between align-items-center custom-range">
+                            <p class="semi-bold raggio">Raggio <span id="distance">8 Km</span></p>
+
+                            <div class="w-50">
+                                <input id="distance-range" type="range" min="1" max="50" value="20" class="slider ">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-3 custom-select">
+                        <select name="Categoria" id="select-categoria" class="w-100 pe-5">
+                            <option value="Default" selected>Categoria</option>
+                        </select>
+                        <span><img src="./images/icon-select.svg" alt=""></span>
+                    </div>
+                    <div class="col-12 col-lg-7 custom-input">
+                        <!-- parole chiave -->
+                        <input id="search-text" class="w-100 ps-5" type="text" placeholder="Ricerca per parole chiave" required>
+                        <span><img src="./images/icon-search.svg" alt=""></span>
+                    </div>
+                    <div class="col-12 col-lg-2 ">
+                        <div class="bg-purple custom-submit d-flex justify-content-center align-items-center">
+                            <a type="submit" id="form_ricerca_servizi_submit">
+                                <div class="d-flex">
+                                    <p class="semi-bold me-3 ">CERCA ORA</p>
+                                    <img src="./images/icon-search-white.svg" alt="" class="custom-icon">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+        <div id="footer"></div>
+
+
+    </main>
+
+
+
+
+
+</body>
+
+</html>

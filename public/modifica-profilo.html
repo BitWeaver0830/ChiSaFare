@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- MAPPE -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./scripts/head_footer.js"></script>
+    <script src="./scripts/modifica-profilo-azienda.js"></script>
+
+
+
+    <title>Modifica Profilo</title>
+
+</head>
+
+<body>
+
+    <main class="profilo-main bg-linear">
+
+        <!-- HEADER -->
+        <div id="header"></div>
+
+        <div class="container">
+            <div class="profilo-div update-profilo-div my-5">
+                <!-- MODIFICA PROFILE PIC -->
+                <div class="bg-purple p-4">
+                    <h2 class="data-ragioneSociale"></h2>
+                </div>
+                <div class="bg-white p-4">
+                    <h4>Modifica Immagine del profilo</h4>
+                    <div class="d-md-flex my-3">
+                        <div class="profilo-image-container">
+                            <img src="" class="data-profilePic" alt="">
+                        </div>
+                        <div class="ms-5">
+                            <form enctype="multipart/form-data">
+                                <label for="newProfilePic">Nuova immagine:</label><br><br><br>
+                                <input type="file" id="newProfilePic" name="newProfilePic"><br>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- fine MODIFICA PROFILE PIC -->
+
+
+                <!-- MODIFICA INTRO E NUMERO -->
+                <div class="bg-purple p-4">
+                    <h4 class="">Modifica Intro e informazioni di contatto</h4>
+                </div>
+                <div class="bg-white p-4">
+                    <form id="form-contatto">
+                        <label for="intro">Intro</label>
+                        <textarea name="intro" id="data-intro" cols="30" rows="10"></textarea>
+                        <div class="d-flex my-3">
+                            <div class="w-50">
+                                <label for="number">Numero di telefono</label>
+                                <input type="text" name="number" id="data-number">
+                            </div>
+                        </div>
+                        <input class="text-decoration-underline" type="submit" value="Salva modifica">
+                    </form>
+                </div> <!-- fine MODIFICA INTRO E NUMERO -->
+
+                <!-- MODIFICA ABOUTUS COPY -->
+                <div class="bg-purple p-4">
+                    <h4>Modifica il testo Su Di Noi</h4>
+                </div>
+                <div class="bg-white p-4">
+                    <form id="form-aboutUs">
+                        <textarea name="aboutUs" id="data-aboutUs" cols="30" rows="10"></textarea>
+                        <input class="text-decoration-underline" type="submit" value="Salva modifica">
+                    </form>
+                </div>
+                <!-- fine MODIFICA ABOUTUS COPY -->
+
+                <!-- MODIFICA GALLERY PRINCIPALE - ABOUTUS-->
+                <div class="bg-purple p-4">
+                    <h4 class="">Modifica Gallery</h4>
+                </div>
+                <div class="bg-white p-4">
+                    <h5 class="my-3"><span class="text-decoration-underline text-danger bold">Attenzione!</span> Ti
+                        consigliamo di salvare le foto caricate, ogni volta <span class="text-decoration-underline">le
+                            dovrai caricare tutte!</span></h5>
+                    <p class="semi-bold my-3">Foto attuali:</p>
+                    <form id="form-gallery-aboutUs">
+                        <div class="row data-aboutUsPhotos "></div>
+                    </form>
+                </div> <!-- fine MODIFICA GALLERY PRINCIPALE - ABOUTUS-->
+
+
+                <!-- MODIFICA GALLERY SECONDARIA - SPECIALIZZAZIONI -->
+                <div class="bg-purple p-4">
+                    <h4 class="">Modifica Gallery Specializzazioni</h4>
+                </div>
+                <div class="bg-white p-4">
+                    <h5 class="my-3"><span class="text-decoration-underline text-danger bold">Attenzione!</span> Ti
+                        consigliamo di salvare le foto caricate, ogni volta <span class="text-decoration-underline">le
+                            dovrai caricare tutte!</span></h5>
+                    <form id="form-gallery-secondary">
+                        <div class="row data-specializationGallery"></div>
+                    </form>
+                </div> <!-- fine MODIFICA GALLERY SECONDARIA - SPECIALIZZAZIONI -->
+            
+            
+            </div> <!-- fine PROFILO DIV -->
+
+            <div id="footer"></div>
+
+    </main>
+
+
+
+</body>
+
+</html>

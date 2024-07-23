@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Chi Sa Fare</title>
+    <meta name="description" content="Pannello di controllo Chi Sa Fare">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/checkLogin.js"></script>
+    <script src="./assets/js/staff-manager.js"></script>
+    <script src="./assets/js/owner-dashboard.js"></script>
+
+
+</head>
+
+<script>
+    if (localStorage.getItem("type") != "owner") {
+        window.location.href = "table.html";
+    }
+</script>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav id="header" class="navbar navbar-dark align-items-start sidebar accordion bg-custom p-0">
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav id="topPage" class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                </nav>
+                <div class="container-fluid">
+                    <div class="d-lg-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark text-custom mb-0">Dashboard</h3>
+                        <div class="card">
+                            <div class="card-body d-md-flex align-items-md-center">
+                                <div class="d-flex justify-content-between">
+                                    <p class="my-0 mx-2">Da</p><input id="dateFrom" type="date">
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="my-0 mx-2">A</p><input id="dateTo" type="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-lg-between mt-2 mt-lg-0">
+                            <a class="btn btn-primary btn-sm d-inline-block bg-custom me-2" type="button"
+                                data-bs-toggle="modal" data-bs-target="#addStaffModal"><i
+                                    class="fas fa-plus-circle fa-sm text-white-50"></i>&nbsp;Invita Staff</a>
+                            <a class="btn btn-primary btn-sm d-inline-block bg-custom ms-2" type="button"
+                                data-bs-toggle="modal" data-bs-target="#listStaffModal"><i
+                                    class="fas fa-address-book fa-sm text-white-50"></i>&nbsp;Lista Staff</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1">
+                                                <span>Guadagni</span>
+                                            </div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="earnPeriodInfo"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-euro-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-info fw-bold text-xs mb-1">
+                                                <span>Commissioni da Pagare</span>
+                                            </div>
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span
+                                                            id="totalToPay"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-cash-register fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Guadagni
+                                                    (annual)</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="earnAnnualInfo"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-euro-sign fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                                                <span>Professionisti (periodo)</span>
+                                            </div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="profPeriodInfo"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                                                <span>Commercialisti (periodo)</span>
+                                            </div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="commPeriodInfo"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                                                <span>Commercialisti Totali</span>
+                                            </div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="commTotalInfo"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                                                <span>Professionsiti Totali</span>
+                                            </div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="profTotInfo"></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <a href="" type="button" class="text-decoration-none" data-bs-toggle="modal"
+                                    data-bs-target="#proNotActiveListModal">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                                                    <span>Professionsiti Non Attivi</span>
+                                                </div>
+                                                <div class="text-dark fw-bold h5 mb-0"><span
+                                                        id="profNotActiveInfo"></span></div>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-2">
+                <div class="col-lg-7 col-xl-8">
+                    <div class="card shadow mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary fw-bold m-0">Professionisti Iscritti</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-area">
+                                <canvas id="profPerDayChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-4">
+                    <div class="card shadow mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary fw-bold m-0">Categorie più performanti</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class=""><canvas id="atecoPerformanceChart" width="50%" height="50%"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © Chi Sa Fare 2023</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+
+
+    <!-- addStaffModal -->
+    <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Invita un nuovo collaboratore</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Inserisci la mail del collaboratore che vuoi invitare</p>
+                    <input class="w-100" type="email" id="addStaffEmail">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button id="addStaffSubmit" type="button" class="btn btn-primary">Invia Email</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fine addStaffModal -->
+
+
+    <!-- listStaffModal -->
+    <div class="modal fade" id="listStaffModal" tabindex="-1" aria-labelledby="listStaffModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Lista dello staff</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <table id="listStaffTable" class="w-100"></table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fine listStaffModal -->
+
+    <!-- proNotActiveListModal -->
+    <div class="modal fade" id="proNotActiveListModal" tabindex="-1" aria-labelledby="proNotActiveListModal"
+        aria-hidden="true">
+        <div class="modal-dialog" id="proNotActiveListModalDialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Lista dello staff</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Professionisti non ancora attivi sulla piattaforma</p>
+                    <table id="proNotActiveList" class="w-100">
+
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fine proNotActiveListModal -->
+
+
+</body>
+
+</html>

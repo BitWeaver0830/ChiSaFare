@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- INCLUSIONI CUSTOM -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+
+    <!-- SOCKET.IO 
+    <script src="../chat/socketIo.js"></script>
+    -->
+    <script src="./scripts/checkLogin.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+
+<script>
+  var socket = io();
+</script>
+    <script src="./scripts/head_footer.js"></script>
+    <script src="./scripts/getChats.js"></script>
+
+    <!--<script src="./scripts/chat.js"></script>-->
+
+
+
+    <title>Modifica Profilo</title>
+
+</head>
+
+<body>
+
+    <main class="chat bg-linear">
+
+        <!-- HEADER -->
+        <div id="header"></div>
+
+        <div class="div-chat row bg-white m-4 py-3">
+
+            <!-- ANTEPRIME MESSAGGI -->
+            <div class="col-12 col-md-3 colonna-anteprime-messaggi">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Anteprime messaggi</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="anteprime-messaggi" class="col-12 my-3">
+                    </div>
+                </div>
+            </div> <!-- fine ANTEPRIME MESSAGGI -->
+
+            <!-- CHAT -->
+            <div class="col-12 col-md-9">
+
+                <div id="chatDiv">
+                    <div id="messages">                        
+
+                    </div>
+                    <form id="sendMessages" action="">
+                        <input type="text" id="input" autocomplete="off" />
+                        <button id="send" class="cta cta-purple"><p>Invia</p></button>
+                    </form>
+                </div>
+
+            </div> <!--fine CHAT -->
+
+        </div> <!-- fine DIV CHAT-->
+
+        <div id="footer"></div>
+
+    </main>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register - Chi Sa Fare</title>
+    <meta name="description" content="Pannello di controllo Chi Sa Fare">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+        <script src="./assets/js/bcSignUp.js"></script>
+</head>
+
+<body class="bg-custom">
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0 background-senape">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex justify-content-lg-center mt-5">
+                        <div class="p-3"><img class="img-fluid" src="assets/img/Logo-CSF.png"></div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Crea un account</h4>
+                            </div>
+
+                            <form id="bcSignUp" class="user" method="POST" enctype="multipart/form-data" action="/api/businessConsultant/signUp">
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                            type="text" id="name" placeholder="Nome" name="name"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text"
+                                            id="lastname" placeholder="Cognome" name="lastname"></div>
+                                </div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="email"
+                                        aria-describedby="emailHelp" placeholder="Indirizzo Email" name="email"></div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                            type="password" id="password" placeholder="Password" name="password"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password"
+                                            id="repeatPassword" placeholder="Ripeti Password" name="repeatPassword">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <select name="securityQuestion" id="securityQuestion" class="w-100">
+                                        <option value="" selected>Scegli una domanda di sicurezza</option>
+                                        <option value="Qual è il tuo colore preferito?">Qual è il tuo colore preferito?
+                                        </option>
+                                        <option value="Qual è il nome della tua scuola elementare?">Qual è il nome della
+                                            tua scuola
+                                            elementare?</option>
+                                        <option value="Qual è il nome del tuo animale domestico?">Qual è il nome del tuo
+                                            animale
+                                            domestico?</option>
+                                        <option value="Qual è il tuo film preferito?">Qual è il tuo film preferito?
+                                        </option>
+                                        <option value="Qual è il tuo cibo preferito?">Qual è il tuo cibo preferito?
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3"><input class="form-control form-control-user" type="text"
+                                        id="securityAnswer" aria-describedby="securityAnswerHelp"
+                                        placeholder="Risposta segreta" name="securityAnswer"></div>
+
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                            type="text" id="pIva" placeholder="P.Iva" name="pIva"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text"
+                                            id="iban" placeholder="Iban" name="iban"></div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                            type="text" id="city" placeholder="Città" name="city"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text"
+                                            id="province" placeholder="Provincia" name="province"></div>
+                                </div>
+
+                                <div class="mb-3"><input class="form-control form-control-user" type="text" id="address"
+                                        aria-describedby="addressHelp" placeholder="Indirizzo" name="address"></div>
+
+                                <div class="mb-3">
+                                    <label class="custom-file-upload">
+                                        <input class="form-control form-control-user" type="file" id="selfCertified" accept=".pdf, .doc, .docx, image/*"
+                                        aria-describedby="addressHelp" placeholder="AutoCertificazione" name="selfCertified">
+                                        Upload AutoCertificazione
+                                    </label>
+                                </div>
+
+                                <div id="messageBox"></div>
+                                <button class="btn btn-primary d-block btn-user w-100" type="submit">Registra
+                                    Account</button>
+                                <hr>
+                            </form>
+                            <div class="text-center"><a class="small" href="login.html">Login</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
