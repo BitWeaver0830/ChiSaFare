@@ -88,14 +88,9 @@ function ascoltaIndirizzo() {
 
 function validazioneSubmit() {
 	var indirizzo = document.getElementById("search-location");
-	var testo = document.getElementById("search-text");
 
 	if (indirizzo.value == "") {
 		alert("Inserisci un indirizzo");
-		return false;
-	}
-	if (testo.value == "") {
-		alert("Inserisci un termine di ricerca");
 		return false;
 	}
 	return true;

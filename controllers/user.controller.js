@@ -430,7 +430,7 @@ async function getAllActiveProfessionals(req, res, next) {
         let tags = req.get('tags');
         let keyWords = req.get('keyWords');
         let distances = new Map();
-        if (distanceMax && keyWords) {
+        if (distanceMax && (keyWords || category)) {
             for (let i = 0; i < professionals.length; i++) {
                 let p = professionals[i];
                 let scarto = false;
@@ -460,7 +460,7 @@ async function getAllActiveProfessionals(req, res, next) {
                         scarto = true;
                     }
                 }
-                if (tags) {
+                if (!scarto && tags) {
                     let professionTags = p.tags || []; // Default to an empty array if tags are not defined for the professional
                     let tag = tags;
                     let tagMatch = false;
@@ -481,7 +481,7 @@ async function getAllActiveProfessionals(req, res, next) {
                 }
 
                 function compareFn(a, b) {
-                    if (keyWords) {
+                    if (keyWords || category) {
                         let kW = keyWords.toLowerCase().replace('\n', '').split(' ');
                         let categoryA = a.category ? a.category.toLowerCase() : [];
                         let categoryB = b.category ? b.category.toLowerCase() : [];
