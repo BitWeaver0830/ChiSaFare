@@ -129,7 +129,7 @@ async function effettuaQuery() {
     var reviewMin = $("#select-recensioni").val();
     var category = $("#select-categoria").val();
 
-    if(distance == null || distance == "" || keyWords == null || keyWords == "" || address == null || address == ""){
+    if(distance == null || distance == "" || address == null || address == "" || ((keyWords == null || keyWords == "") && (category == null || category == "Default"))){
         alert("Ricerca non valida");
         return;
     }
