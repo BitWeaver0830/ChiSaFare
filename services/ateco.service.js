@@ -94,7 +94,7 @@ async function addToMacroAteco(atecoCode, pID) {
 }
 
 async function getAllAteco() {
-	let result = await atecoModel.find()
+	let result = await atecoModel.find().sort({detail: 1})
 	return result.map((ateco) => ateco.code + " - " + ateco.detail)
 }
 
