@@ -62,6 +62,7 @@ function fillStatic(professionist) {
 	$("#cap_azienda").val(professionist.cap);
 	$("#provincia_azienda").val(professionist.province);
 	$("#email_azienda").val(professionist.email);
+	$("#ateco_azienda").val(professionist.ateco);
 
 	if (professionist.tags && Array.isArray(professionist.tags)) {
 		const tagsString = professionist.tags.join(", ");
@@ -83,24 +84,72 @@ function fillStatic(professionist) {
 	fillAteco(professionist.ateco);
 }
 
-function fillAteco(ateco) {
-	$.ajax({
-		type: "GET",
-		url: "/api/user/getAllAteco",
-		contentType: "application/json",
-	})
-		.done((res) => {
-			res.forEach((element) => {
-				var template = `<option value="${element}"`;
-				if (element == ateco) template += ` selected`;
-				template += `>${element}</option>`;
-				$("#ateco_azienda").append(template);
-			});
-		})
-		.fail((res) => {
-			console.log("Nessun Ateco trovato");
-		});
+function getAteco(keyword) {
+    const apiUrl = keyword ? `/api/user/getAllAteco?search=${keyword}` : '/api/user/getAllAteco';
+
+    $.ajax({
+        type: "GET",
+        url: apiUrl,
+        contentType: "application/json",
+    })
+    .done((res) => {
+        const inputField = document.getElementById('ateco_azienda');
+        const optionsList = document.getElementById('select-categoria-options');
+        const searchText = inputField.value.toLowerCase();
+        const filteredData = res.filter(option => option.toLowerCase().includes(searchText));
+
+        optionsList.innerHTML = '';
+
+        if (filteredData.length > 0) {
+            filteredData.forEach(option => {
+                const li = document.createElement('li');
+                li.textContent = option;
+                li.addEventListener('click', function() {
+                    inputField.value = option;
+                    optionsList.innerHTML = ''; 
+                    optionsList.style.display = 'none'; 
+                });
+                optionsList.appendChild(li);
+            });
+            optionsList.style.display = 'block'; 
+        } else {
+            optionsList.style.display = 'none'; 
+        }
+    })
+    .fail((res) => {
+        console.log("Nessun Ateco trovato");
+    });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const inputField = document.getElementById('ateco_azienda');
+    const optionsList = document.getElementById('select-categoria-options');
+
+    inputField.addEventListener('click', function() {
+        getAteco('');
+    });
+
+    inputField.addEventListener('input', function() {
+        const keyword = this.value; 
+        
+				getAteco(keyword); 
+				adjustOptionsListHeight();
+    });
+
+		function adjustOptionsListHeight() {
+        const optionCount = optionsList.getElementsByTagName('li').length;
+        const maxHeight = optionCount > 5 ? '150px' : 'auto';
+        
+        optionsList.style.maxHeight = maxHeight;
+    }
+
+    document.addEventListener('click', function(event) {
+			if (!inputField.contains(event.target) && !optionsList.contains(event.target)) {
+					optionsList.style.display = 'none';
+			}
+		});
+});
+
 
 async function getCoordinates(address) {
 	try {

@@ -23,7 +23,35 @@ $(document).ready(async function () {
 	});
 
 	// AGGIUNGERE PROFESSIONISTA
-	getAteco(); 
+	const inputField = document.getElementById('ateco_azienda');
+	const optionsList = document.getElementById('select-categoria-options');
+
+	inputField.addEventListener('click', function() {
+			getAteco('');
+	});
+
+	inputField.addEventListener('input', function() {
+			const keyword = this.value; 
+			
+			getAteco(keyword); 
+			adjustOptionsListHeight();
+	});
+
+	function adjustOptionsListHeight() {
+			const optionCount = optionsList.getElementsByTagName('li').length;
+			const maxHeight = optionCount > 5 ? '150px' : 'auto';
+			
+			optionsList.style.maxHeight = maxHeight;
+	}
+
+	document.addEventListener('click', function(event) {
+		if (!inputField.contains(event.target) && !optionsList.contains(event.target)) {
+				optionsList.style.display = 'none';
+		}
+	});
+
+	getAteco(''); 
+
 	$("#add-pro").on("submit", function (e) {
 		e.preventDefault();
 		addProfessional();
@@ -111,17 +139,37 @@ function fillTable(data) {
 	$("#profTableBody").html(template_html);
 }
 
-function getAteco() {
+function getAteco(keyword) {
+	const apiUrl = keyword ? `/api/user/getAllAteco?search=${keyword}` : '/api/user/getAllAteco';
+
 	$.ajax({
 		type: "GET",
-		url: "/api/user/getAllAteco",
+		url: apiUrl,
 		contentType: "application/json",
 	})
 		.done((res) => {
-			res.forEach((element) => {
-				var template = `<option value="${element}">${element}</option>`;
-				$("#ateco_azienda").append(template);
-			});
+			const inputField = document.getElementById('ateco_azienda');
+			const optionsList = document.getElementById('select-categoria-options');
+			const searchText = inputField.value.toLowerCase();
+			const filteredData = res.filter(option => option.toLowerCase().includes(searchText));
+
+			optionsList.innerHTML = '';
+
+        if (filteredData.length > 0) {
+            filteredData.forEach(option => {
+                const li = document.createElement('li');
+                li.textContent = option;
+                li.addEventListener('click', function() {
+                    inputField.value = option;
+                    optionsList.innerHTML = ''; 
+                    optionsList.style.display = 'none'; 
+                });
+                optionsList.appendChild(li);
+            });
+            optionsList.style.display = 'block'; 
+        } else {
+            optionsList.style.display = 'none'; 
+        }
 		})
 		.fail((res) => {
 			console.log("Nessun Ateco trovato");
