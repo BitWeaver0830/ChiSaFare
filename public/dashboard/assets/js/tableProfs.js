@@ -1,3 +1,6 @@
+// ALL ATECO
+var allAteco = getAteco('');
+
 $(document).ready(async function () {
 	// CONTROLLO TABLE
 	var data = await fetchProfessional();
@@ -27,13 +30,11 @@ $(document).ready(async function () {
 	const optionsList = document.getElementById('select-categoria-options');
 
 	inputField.addEventListener('click', function() {
-			getAteco('');
+		setAteco()
 	});
 
 	inputField.addEventListener('input', function() {
-			const keyword = this.value; 
-			
-			getAteco(keyword); 
+			setAteco(); 
 			adjustOptionsListHeight();
 	});
 
@@ -139,6 +140,31 @@ function fillTable(data) {
 	$("#profTableBody").html(template_html);
 }
 
+function setAteco() {
+	const inputField = document.getElementById('ateco_azienda');
+	const optionsList = document.getElementById('select-categoria-options');
+	const searchText = inputField.value.toLowerCase();
+	const filteredData = allAteco.filter(option => option.toLowerCase().includes(searchText));
+
+	optionsList.innerHTML = '';
+
+	if (filteredData.length > 0) {
+			filteredData.forEach(option => {
+					const li = document.createElement('li');
+					li.textContent = option;
+					li.addEventListener('click', function() {
+							inputField.value = option;
+							optionsList.innerHTML = ''; 
+							optionsList.style.display = 'none'; 
+					});
+					optionsList.appendChild(li);
+			});
+			optionsList.style.display = 'block'; 
+	} else {
+			optionsList.style.display = 'none'; 
+	}
+}
+
 function getAteco(keyword) {
 	const apiUrl = keyword ? `/api/user/getAllAteco?search=${keyword}` : '/api/user/getAllAteco';
 
@@ -148,28 +174,8 @@ function getAteco(keyword) {
 		contentType: "application/json",
 	})
 		.done((res) => {
-			const inputField = document.getElementById('ateco_azienda');
-			const optionsList = document.getElementById('select-categoria-options');
-			const searchText = inputField.value.toLowerCase();
-			const filteredData = res.filter(option => option.toLowerCase().includes(searchText));
-
-			optionsList.innerHTML = '';
-
-        if (filteredData.length > 0) {
-            filteredData.forEach(option => {
-                const li = document.createElement('li');
-                li.textContent = option;
-                li.addEventListener('click', function() {
-                    inputField.value = option;
-                    optionsList.innerHTML = ''; 
-                    optionsList.style.display = 'none'; 
-                });
-                optionsList.appendChild(li);
-            });
-            optionsList.style.display = 'block'; 
-        } else {
-            optionsList.style.display = 'none'; 
-        }
+			allAteco = res;
+			setAteco();
 		})
 		.fail((res) => {
 			console.log("Nessun Ateco trovato");
