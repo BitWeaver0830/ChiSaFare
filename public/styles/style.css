@@ -174,12 +174,20 @@ p {
 	width: fit-content;
 	padding: 0.8rem 1.2rem;
 	border-radius: 10px;
+
+	@media (max-width: 576px) {
+		width: auto;
+	}
 }
 
 .cta-double>* {
 	width: fit-content;
 	padding: 0.8rem 2.5rem;
 	border-radius: 10px;
+
+	@media (max-width: 576px) {
+		width: auto;
+	}
 }
 
 .cta-purple>* {
