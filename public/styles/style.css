@@ -1189,3 +1189,23 @@ input::placeholder {
      
     }
 }
+
+.photo-container {
+	position: relative;
+}
+
+.photo-container label {
+	cursor: pointer;
+	position: relative;
+}
+
+.photo-container .update-photo-input {
+	display: none;
+}
+
+.photo-container .photo-actions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 100;
+}

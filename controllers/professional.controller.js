@@ -263,6 +263,40 @@ async function uploadProfilePic(req, res, next) {
 	}
 }
 
+async function removeAboutUs(req, res, next) {
+	try {
+		const p = await pm.findById(req.get("pID"));
+		if (req.get("type") === "about") {
+			if (req.get("galleryId") < p.aboutUsGallery.length) {
+				let removedGallery = p.aboutUsGallery.splice(req.get("galleryId"), 1)[0];
+				if (removedGallery) {
+					let key =
+						"galleries/" +
+						removedGallery.split("galleries/")[1].replaceAll("%20", " ");
+					await bucketService.deleteS3File("chi-sa-fare-bucket", key);
+				}
+			}
+		}
+		else {
+			if (req.get("specializationsGalleryId") < p.specializationsGallery.length) {
+				let removedSpecializationsGallery = p.specializationsGallery.splice(req.get("specializationsGalleryId"), 1)[0];
+				if (removedSpecializationsGallery) {
+					let key =
+						"galleries/" +
+						removedSpecializationsGallery.split("galleries/")[1].replaceAll("%20", " ");
+					await bucketService.deleteS3File("chi-sa-fare-bucket", key);
+				}
+			}
+		}
+		await p.save();
+		res.send("About us removed!");
+	} catch (error) {
+		err = new Error(error.message);
+		err.statusCode = 406;
+		next(err);
+	}
+}
+
 async function uploadAboutUs(req, res, next) {
 	try {
 		const p = await pm.findById(req.get("pID"));
@@ -271,32 +305,34 @@ async function uploadAboutUs(req, res, next) {
 			? req.files.specializationsGallery
 			: null;
 		if (aboutUsGallery) {
-			const oldGallery = p.aboutUsGallery;
-			p.aboutUsGallery = [];
-			for (i = 0; i < aboutUsGallery.length; i++) {
-				p.aboutUsGallery.push(aboutUsGallery[i].location);
-			}
-			for (i = 0; i < oldGallery.length; i++) {
-				let key =
-					"galleries/" +
-					oldGallery[i].split("galleries/")[1].replaceAll("%20", " ");
-                    console.log(key);
-				await bucketService.deleteS3File("chi-sa-fare-bucket", key);
-			}
+			// const oldGallery = p.aboutUsGallery;
+			// p.aboutUsGallery = [];
+			// for (i = 0; i < aboutUsGallery.length; i++) {
+			// 	p.aboutUsGallery.push(aboutUsGallery[i].location);
+			// }
+			p.aboutUsGallery.push(aboutUsGallery[0].location);
+			// for (i = 0; i < oldGallery.length; i++) {
+			// 	let key =
+			// 		"galleries/" +
+			// 		oldGallery[i].split("galleries/")[1].replaceAll("%20", " ");
+      //               console.log(key);
+			// 	await bucketService.deleteS3File("chi-sa-fare-bucket", key);
+			// }
 		}
 		if (specializationGallery) {
-			const oldSpecializations = p.specializationsGallery;
-			p.specializationsGallery = [];
-			for (i = 0; i < specializationGallery.length; i++) {
-				p.specializationsGallery.push(specializationGallery[i].location);
-			}
-			for (i = 0; i < oldSpecializations.length; i++) {
-				let key =
-					"galleries/" +
-					oldSpecializations[i].split("galleries/")[1].replaceAll("%20", " ");
-                    console.log(key);
-				await bucketService.deleteS3File("chi-sa-fare-bucket", key);
-			}
+			// const oldSpecializations = p.specializationsGallery;
+			// p.specializationsGallery = [];
+			// for (i = 0; i < specializationGallery.length; i++) {
+			// 	p.specializationsGallery.push(specializationGallery[i].location);
+			// }
+			p.specializationsGallery.push(specializationGallery[0].location);
+			// for (i = 0; i < oldSpecializations.length; i++) {
+			// 	let key =
+			// 		"galleries/" +
+			// 		oldSpecializations[i].split("galleries/")[1].replaceAll("%20", " ");
+      //               console.log(key);
+			// 	await bucketService.deleteS3File("chi-sa-fare-bucket", key);
+			// }
 		}
 
 		if (req.body.aboutUsCopy) {
@@ -877,6 +913,7 @@ module.exports = {
 	getSecurityQuestion,
 	uploadProfilePic,
 	uploadAboutUs,
+	removeAboutUs,
 	updateFields,
 	activate,
 	createPost,

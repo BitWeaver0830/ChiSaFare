@@ -2,6 +2,7 @@ const models = require('../utils/MongoDB/models');
 const dayjs = require('dayjs');
 
 const rm = models.reviewModel;
+const user = models.userModel;
 
 async function addReview(vote,text,userID,professionalID){
     let review = await rm.findOne({
@@ -29,7 +30,11 @@ async function addReview(vote,text,userID,professionalID){
 }
 
 async function getReview(id){
-    return await rm.findById(id);
+    const review = await rm.findById(id).lean();
+    if (review.userID) {
+        review.user = await user.findById(review.userID).select("lastname name email _id");
+    }
+    return review;
 }
 
 async function removeReview(id){
