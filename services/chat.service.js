@@ -23,6 +23,7 @@ async function addMessage(userID,professionalID,message){
     }
     let c = await cm.findOne({userID,professionalID});
     message.date = dayjs().format()
+    message.read = false;
     if(!c){
         c = new cm({
             userID,
@@ -36,6 +37,43 @@ async function addMessage(userID,professionalID,message){
         await c.save();
         return message;
     }
+}
+
+async function markMessagesAsRead(userID, professionalID) {
+    await cm.updateOne(
+        { userID, professionalID },
+        { $set: { "messages.$[elem].read": true } },
+        {
+            arrayFilters: [
+                { "elem.to": professionalID, 
+                    $or: [
+                        { "elem.read": { $exists: false } },
+                        { "elem.read": false } 
+                    ]
+                }
+            ],
+            multi: true
+        }
+    );
+}
+
+async function getUnreadCount(userID, professionalID) {
+    let c = await cm.findOne({ userID, professionalID });
+    if (!c) {
+        return 0;
+    }
+    return c.messages.filter(message => message.to === userID && !message.read).length;
+}
+
+async function getTotalUnreadCount(professionalID) {
+    let chats = await cm.find({ professionalID });
+    if (!chats || chats.length === 0) {
+        return 0;
+    }
+
+    return chats.reduce((total, chat) => {
+        return total + chat.messages.filter(message => message.to === professionalID && !message.read).length;
+    }, 0);
 }
 
 async function getDestinatariPerUtenti(userID){
@@ -76,5 +114,8 @@ module.exports = {
     getChat,
     addMessage,
     getDestinatariPerUtenti,
-    getDestinatariPerAziende
+    getDestinatariPerAziende,
+    markMessagesAsRead,
+    getUnreadCount,
+    getTotalUnreadCount
 }

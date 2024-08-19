@@ -378,6 +378,9 @@ router.get(
 
 router.get("/chat/getChat", authGuard.chat, chatController.getChat)
 router.get("/chat/getDestinatari", chatController.getDestinatari)
+router.get("/chat/getUnreadCount", authGuard.chat, chatController.getUnreadCount)
+router.get("/chat/getTotalUnreadCount", authGuard.chat, chatController.getTotalUnreadCount)
+
 
 // ***** tag *****
 

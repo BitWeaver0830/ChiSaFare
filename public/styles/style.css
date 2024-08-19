@@ -1209,3 +1209,11 @@ input::placeholder {
 	right: 0;
 	z-index: 100;
 }
+
+#unread-count-badge {
+	font-size: 0.75rem; /* Adjust font size */
+	padding: 0.5em 0.7em; /* Adjust padding */
+	transform: translate(-50%, -50%); /* Ensure correct positioning */
+	color: white;
+	border: unset !important;
+}
