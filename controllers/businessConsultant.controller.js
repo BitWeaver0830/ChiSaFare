@@ -18,7 +18,7 @@ const tagService = require('../services/tag.service');
 let bcm = models.businessConsultantModel;
 let pm = models.professionalModel;
 const bcFields = [ 'email','name','lastname','pIva','address','city','province','iban'];
-const pFields = [ 'ragioneSociale','pIva','address','city','province','cap','visuraExp','durcExp','insuranceExp','category','ateco', 'latitude', 'longitude','tags'];
+const pFields = [ 'ragioneSociale','pIva','address','city','province','cap','visuraExp','durcExp','insuranceExp','category','ateco', 'latitude', 'longitude','tags', 'email'];
 
 async function signUp(req,res,next){
     console.log("Signup in corso...");
