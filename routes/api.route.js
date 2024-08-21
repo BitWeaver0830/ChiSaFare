@@ -165,10 +165,15 @@ router.post(
 	"/professional/uploadAboutUs",
 	authGuard.AuthGuard,
 	multers.uploadGallery.fields([
-		{ name: "aboutUsGallery", maxCount: 5 },
-		{ name: "specializationsGallery", maxCount: 5 },
+		{ name: "aboutUsGallery", maxCount: 1 },
+		{ name: "specializationsGallery", maxCount: 1 },
 	]),
 	professionalController.uploadAboutUs
+)
+router.delete(
+	"/professional/removeAboutUs",
+	authGuard.AuthGuard,
+	professionalController.removeAboutUs
 )
 router.post(
 	"/professional/updateFields",
@@ -373,6 +378,9 @@ router.get(
 
 router.get("/chat/getChat", authGuard.chat, chatController.getChat)
 router.get("/chat/getDestinatari", chatController.getDestinatari)
+router.get("/chat/getUnreadCount", authGuard.chat, chatController.getUnreadCount)
+router.get("/chat/getTotalUnreadCount", authGuard.chat, chatController.getTotalUnreadCount)
+
 
 // ***** tag *****
 

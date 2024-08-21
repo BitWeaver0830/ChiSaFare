@@ -81,7 +81,7 @@ function fillStatic(professionist) {
 		professionist.insuranceExp ? professionist.insuranceExp.split("T")[0] : ""
 	);
 
-	fillAteco(professionist.ateco);
+	// fillAteco(professionist.ateco);
 }
 
 function getAteco(keyword) {
@@ -183,6 +183,7 @@ async function updatePro(event) {
 	var visuraExp = $("#date-visura").val();
 	var durcExp = $("#date-durc").val();
 	var insuranceExp = $("#date-assicurazione").val();
+  var email = $("#email_azienda").val();
   var ateco = $("#ateco_azienda").val();
 	var tags = selectedTags;
   var category = ateco.split(" - ")[1];
@@ -204,8 +205,9 @@ async function updatePro(event) {
             visuraExp:visuraExp,
             durcExp:durcExp,
             insuranceExp:insuranceExp,
-			latitude:latitude,
-			longitude:longitude,
+						latitude:latitude,
+						longitude:longitude,
+            email:email,
             ateco:ateco,
             category:category,
 			tags:tags

@@ -1197,3 +1197,31 @@ input::placeholder {
      
     }
 }
+
+.photo-container {
+	position: relative;
+}
+
+.photo-container label {
+	cursor: pointer;
+	position: relative;
+}
+
+.photo-container .update-photo-input {
+	display: none;
+}
+
+.photo-container .photo-actions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 100;
+}
+
+#unread-count-badge {
+	font-size: 0.75rem; /* Adjust font size */
+	padding: 0.5em 0.7em; /* Adjust padding */
+	transform: translate(-50%, -50%); /* Ensure correct positioning */
+	color: white;
+	border: unset !important;
+}

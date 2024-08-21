@@ -1,4 +1,9 @@
 window.addEventListener("load", function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
 	gestisciFiltri();
 
 	fillStaticFields();
@@ -189,6 +194,8 @@ function fillResults(professionals){
 
 function createResult(professional){
 
+    var reviewsWithUser = professional.reviews.filter(review => review.user !== null);
+
     var template = `
     <div class="risultato-ricerca">
     
@@ -205,7 +212,7 @@ function createResult(professional){
                                 <h4 class="risultato-nomeAzienda mb-2">${professional.ragioneSociale}</h4>
                                 <p class="risultato-posizioneAzienda text-grey semi-bold mb-2">${professional.city + "," + professional.address + " - " + professional.distance + "Km"}</p>
                                 
-                                <div class="d-flex">`;
+                                <div class="d-flex" data-bs-toggle="tooltip" data-bs-placement="top" title="${reviewsWithUser.length > 0 ? reviewsWithUser.slice(0, 5).map((review) => review.user.name + " " + review.user.lastname).join("&#10;") : "Nessuna recensione"}">`;
 
                                 var count = 0, avg = 0;
 

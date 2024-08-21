@@ -178,10 +178,13 @@ function checkReviews(reviews) {
 		let count = reviews.length > 2 ? 2 : reviews.length;
 		for (var i = 0; i < count; i++) {
 			reviews_html += `
-            <div class="d-flex align-items-center my-3">
-                <img src="./images/icon-star-dark.svg" alt="" class="custom-icon">
-				<p class="mx-1">${reviews[i].vote}/5</p>
-                <p class="ms-2 data-review">${reviews[i].text}</p>
+            <div class="d-flex flex-column border-bottom border-2 my-3">
+							<p class="mx-1 fw-bold">${reviews[i].user ? reviews[i].user.name + " " + reviews[i].user.lastname : "Deleted User"}</p>
+							<div class="d-flex align-items-center my-2">
+									<img src="./images/icon-star-dark.svg" alt="" class="custom-icon">
+									<p class="mx-1">${reviews[i].vote}/5</p>
+									<p class="ms-2 data-review">${reviews[i].text}</p>
+							</div>
             </div>`;
 		}
 		$(".data-reviews").html(reviews_html);
@@ -189,11 +192,14 @@ function checkReviews(reviews) {
 		reviews_html = ``;
 		reviews.forEach((review) => {
 			reviews_html += `
-			<div class="d-flex align-items-center my-3">
-                <img src="./images/icon-star-dark.svg" alt="" class="custom-icon">
-				<p class="mx-1">${review.vote}/5</p>
-                <p class="ms-2 data-review">${review.text}</p>
-            </div>`;
+				<div class="d-flex flex-column border-bottom border-2 my-3">
+					<p class="mx-1 fw-bold">${review.user ? review.user.name + " " + review.user.lastname : "Deleted User"}</p>
+					<div class="d-flex align-items-center my-2">
+							<img src="./images/icon-star-dark.svg" alt="" class="custom-icon">
+							<p class="mx-1">${review.vote}/5</p>
+							<p class="ms-2 data-review">${review.text}</p>
+					</div>
+				</div>`;
 		});
 		$("#recensioniModal .recensioni-div").html(reviews_html);
 	} else {
@@ -297,7 +303,7 @@ function formAddReview() {
 			<form id="addReview">
 				<div>
 					<label for="reviewVote">Voto</label>
-					<select name="reviewVote" id="reviewVote" class="modal-form-control">
+					<select name="reviewVote" id="reviewVote" class="modal-form-control" style="width: 3rem;">
 						<option value="1">1/5</option>
 						<option value="2">2/5</option>
 						<option value="3">3/5</option>

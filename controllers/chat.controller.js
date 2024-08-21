@@ -6,11 +6,14 @@ const socketIo = require('../chat/socketIo');
 async function getChat(req,res,next){
     console.log("chat.controller")  
     try {
-        if(req.get('uID') && req.get('pID')){
-            let u = await um.findById(req.get('uID'));
-            let p = await pm.findById(req.get('pID'));
+        const uID = req.get('uID');
+        const pID = req.get('pID');
+        if(uID && pID){
+            let u = await um.findById(uID);
+            let p = await pm.findById(pID);
             if(u && p){
-                let result = await cs.getChat(req.get('uID'),req.get('pID'));
+                if (req.get("professionalID")) await cs.markMessagesAsRead(uID, pID);
+                let result = await cs.getChat(uID,pID);
                 socketIo.emitEvent('messages',result)
                 res.json(result);
             }else{
@@ -77,8 +80,47 @@ async function getDestinatari(req,res,next){
     }
 }
 
+async function getUnreadCount(req, res, next) {
+    try {
+        const uID = req.get('uID');
+        const pID = req.get('pID');
+        if (uID && pID) {
+            const count = await cs.getUnreadCount(uID, pID);
+            res.json({ unreadCount: count });
+        } else {
+            const err = new Error('Missing userID or professionalID params');
+            err.statusCode = 406;
+            next(err);
+        }
+    } catch (error) {
+        const err = new Error(error.message);
+        err.statusCode = 406;
+        next(err);
+    }
+}
+
+async function getTotalUnreadCount(req, res, next) {
+    try {
+        const pID = req.get('pID');
+        if (pID) {
+            const count = await cs.getTotalUnreadCount(pID);
+            res.json({ unreadCount: count });
+        } else {
+            const err = new Error('Missing professionalID param');
+            err.statusCode = 406;
+            next(err);
+        }
+    } catch (error) {
+        const err = new Error(error.message);
+        err.statusCode = 406;
+        next(err);
+    }
+}
+
 module.exports = {
     getChat,
     sendMessage,
-    getDestinatari
+    getDestinatari,
+    getUnreadCount,
+    getTotalUnreadCount
 }

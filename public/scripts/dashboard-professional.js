@@ -14,6 +14,12 @@ window.addEventListener("load", function () {
     window.location.href = `profilo-social.html?id=${localStorage.getItem("userID")}`;
   });
 
+  $('#profile-user-chat').click(function (e) {
+    e.preventDefault();
+    window.location.href = `chat.html`;
+  });
+
+  fetchUnreadCountAndUpdateBadge();
 
 });
 
@@ -49,4 +55,35 @@ function checkLogin(){
   if (localStorage.getItem("token") == null) {
     window.location.href = "login.html";
   }
+}
+
+function fetchUnreadCountAndUpdateBadge() {
+  $.ajax({
+      url: "/api/chat/getTotalUnreadCount",
+      type: "GET",
+      headers: {
+        pID: localStorage.getItem("userID"),
+        token: localStorage.getItem("token"),
+        uID: localStorage.getItem('userID'), 
+        professionalID: localStorage.getItem('userID'), 
+      },
+      dataType: "json"
+  })
+  .done(function (data) {
+      const unreadCount = data.unreadCount;
+      const badgeElement = $('#unread-count-badge');
+
+      // Update the badge with the unread count
+      badgeElement.text(unreadCount);
+
+      // Optionally hide the badge if count is 0
+      if (unreadCount === 0) {
+          badgeElement.hide();
+      } else {
+          badgeElement.show();
+      }
+  })
+  .fail(function () {
+      console.error('Error fetching unread count');
+  });
 }
