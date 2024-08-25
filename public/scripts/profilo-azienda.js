@@ -187,6 +187,10 @@ function checkReviews(reviews) {
 							</div>
             </div>`;
 		}
+		reviews_html += `
+			<a href="" type="button" data-bs-toggle="modal" data-bs-target="#recensioniModal">
+					<p class="text-decoration-underline">Vedi tutte le recensioni</p>
+			</a>`
 		$(".data-reviews").html(reviews_html);
 
 		reviews_html = ``;
