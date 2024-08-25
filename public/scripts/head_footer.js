@@ -54,7 +54,7 @@ window.addEventListener("load", function () {
                 <a class="nav-link my-3 my-lg-0" href="chat.html"><h4>Messaggi</h4></a>
                 <div class="d-flex justify-content-end">
 
-                <a id="profileRoute" href="" class="me-4">
+                <a id="profileRoute" class="profileRoute" href="" class="me-4">
                     <img src="./images/user-icon.svg" alt="" class="custom-icon-double ms-3">
                 </a>
                 </div>
@@ -88,7 +88,7 @@ window.addEventListener("load", function () {
 
                  <div class="col-12 col-md-3">
                     <div>
-                        <a href="/dashboard-personale.html">Profilo</a>
+                        <a href="" class="profileRoute">Profilo</a>
                     </div>
                     <div>
                         <a href="/ricerca-servizi.html">Ricerca Professionisti</a>
@@ -103,7 +103,7 @@ window.addEventListener("load", function () {
 
 	$("#footer").html(footer_html)
 
-	$("#profileRoute").click(function (e) {
+	$(".profileRoute").click(function (e) {
 		e.preventDefault()
 		if (!localStorage.getItem("token")) {
 			window.location.href = "login.html"
