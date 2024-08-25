@@ -72,7 +72,7 @@ window.addEventListener("load", function () {
 
 	var footer_html = `
 <!--  home footer -->
-<section class="bg-darkPurple p-4">
+<section class="bg-darkPurple p-4 position-fixed bottom-0 w-100" style="z-index: 1000">
 
     <div class="row">
 
