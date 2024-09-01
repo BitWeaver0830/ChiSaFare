@@ -55,7 +55,7 @@ window.addEventListener("load", function () {
                 <div class="d-flex justify-content-end">
 
                 <a id="profileRoute" class="profileRoute" href="" class="me-4">
-                    <img src="./images/user-icon.svg" alt="" class="custom-icon-double ms-3">
+                    <img src="./images/user-icon.svg" alt="" class="custom-icon-double me-4">
                 </a>
                 </div>
             </div>

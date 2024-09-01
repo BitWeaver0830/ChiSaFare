@@ -64,7 +64,13 @@ function fillAnteprime(data) {
 
         let template_html = `
         <a class="openChat" id="${element._id}" href="">
-            <div class="anteprima-messaggio my-3">
+            <div class="anteprima-messaggio my-3 position-relative">
+                ${element.unreadCount > 0 ? 
+                    `<span id="unread-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        ${element.unreadCount}
+                    </span>`
+                    : ""
+                }
                 <div class="d-flex align-content-center">
 
                     <div class="preview-image">
@@ -217,13 +223,13 @@ function fillChat(messages) {
     $('#messages').html('');
 
     for(let i = 0; i < messagesArray.length; i++){
+        const isInviato = messagesArray[i].from == localStorage.getItem('userID');
         $('#messages').append(`
-        <div class="d-flex align-content-center my-2">
-        ${ messagesArray[i].from == localStorage.getItem('userID') ? '<p class="mb-0 semi-bold">Inviato:</p>' : '' }
-        ${ messagesArray[i].from != localStorage.getItem('userID') ? '<p class="mb-0 semi-bold">Ricevuto:</p>' : '' }
+        <div class="d-flex align-content-center justify-content-${ isInviato ? "end" : "start" } my-2 me-4">
+        ${ isInviato ? '<p class="mb-0 semi-bold">Inviato:</p>' : '<p class="mb-0 semi-bold">Ricevuto:</p>' }
         <p class="ms-3 mb-0">  ${messagesArray[i].date.split('T')[0]} alle ${messagesArray[i].date.split('T')[1].split('+')[0]} </p>
         </div>
-        <p>  ${messagesArray[i].text} </p>
+        <p class="d-flex justify-content-${ isInviato ? "end" : "start" } me-4">  ${messagesArray[i].text} </p>
         `)
     }
     

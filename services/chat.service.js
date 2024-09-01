@@ -57,12 +57,46 @@ async function markMessagesAsRead(userID, professionalID) {
     );
 }
 
-async function getUnreadCount(userID, professionalID) {
+async function markUserMessagesAsRead(userID, professionalID) {
+    await cm.updateOne(
+        { userID, professionalID },
+        { $set: { "messages.$[elem].read": true } },
+        {
+            arrayFilters: [
+                { "elem.to": userID, 
+                    $or: [
+                        { "elem.read": { $exists: false } },
+                        { "elem.read": false } 
+                    ]
+                }
+            ],
+            multi: true
+        }
+    );
+}
+
+async function getUserUnreadCount(userID, professionalID) {
     let c = await cm.findOne({ userID, professionalID });
     if (!c) {
         return 0;
     }
-    return c.messages.filter(message => message.to === userID && !message.read).length;
+    const unreadMessages = c.messages.filter(message => message.to === userID && !message.read);
+    return {
+        count: unreadMessages.length,
+        latestMessageTime: new Date(Math.max(...unreadMessages.map(message => new Date(message.date))))
+    };
+}
+
+async function getProfessionalUnreadCount(userID, professionalID) {
+    let c = await cm.findOne({ userID, professionalID });
+    if (!c) {
+        return 0;
+    }
+    const unreadMessages = c.messages.filter(message => message.to === professionalID && !message.read);
+    return {
+        count: unreadMessages.length,
+        latestMessageTime: new Date(Math.max(...unreadMessages.map(message => new Date(message.date))))
+    };
 }
 
 async function getTotalUnreadCount(professionalID) {
@@ -82,12 +116,17 @@ async function getDestinatariPerUtenti(userID){
         let result = [];
         for(let i=0;i<destinatari.length;i++){
             let p = await ps.getProfessionalDestinatario(destinatari[i].professionalID);
+            let c = await getUserUnreadCount(userID, destinatari[i].professionalID);
             if(p){
-                result.push(p);
+                result.push({ ...p, unreadCount: c.count, latestMessageTime: c.latestMessageTime });
             }
         }
         
-    return result;
+        return result.sort((a, b) => {
+            if (a.latestMessageTime === null) return 1;
+            if (b.latestMessageTime === null) return -1;
+            return new Date(b.latestMessageTime) - new Date(a.latestMessageTime) > 0 ? 1 : -1;
+        });
     }  
     return [];
 }
@@ -98,12 +137,17 @@ async function getDestinatariPerAziende(professionalID){
         let result = [];
         for(let i=0;i<destinatari.length;i++){
             let u = await us.getUser(destinatari[i].userID);
+            let c = await getProfessionalUnreadCount(destinatari[i].userID, professionalID);
             if(u){
-                result.push(u);
+                result.push({ ...u, unreadCount: c.count, latestMessageTime: c.latestMessageTime });
             }
         }
 
-    return result;
+        return result.sort((a, b) => {
+            if (a.latestMessageTime === null) return 1;
+            if (b.latestMessageTime === null) return -1;
+            return new Date(b.latestMessageTime) - new Date(a.latestMessageTime) > 0 ? 1 : -1;
+        });
     }  
     return [];
 }
@@ -116,6 +160,8 @@ module.exports = {
     getDestinatariPerUtenti,
     getDestinatariPerAziende,
     markMessagesAsRead,
-    getUnreadCount,
+    markUserMessagesAsRead,
+    getUserUnreadCount,
+    getProfessionalUnreadCount,
     getTotalUnreadCount
 }

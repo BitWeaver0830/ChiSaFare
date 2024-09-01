@@ -1200,6 +1200,7 @@ input::placeholder {
 
 .photo-container {
 	position: relative;
+	margin-bottom: 60px;
 }
 
 .photo-container label {
@@ -1216,6 +1217,20 @@ input::placeholder {
 	top: 0;
 	right: 0;
 	z-index: 100;
+}
+
+.photo-container p {
+	width: 80%; 
+	text-align: center;
+	bottom: -35px; 
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	white-space: normal; 
+	border: 2px solid black; 
+	border-radius: 10px; 
+	height: auto;
+	position: absolute;
+	padding: 5px;
 }
 
 #unread-count-badge {

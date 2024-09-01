@@ -106,7 +106,9 @@ function fillPage(data) {
 						</div>
 					</label>
 					<input type="file" class="update-photo-input" id="image-gallery-${i}" data-gallery-index="${i}">
-				</div>`;
+					<p>adsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffs</p>
+				</div>
+				`;
 		} else {
 			photoTemplate = `
 				<div class="photo-container col-12 col-md-6 col-lg-4 p-2 d-flex justify-content-center">
@@ -136,6 +138,7 @@ function fillPage(data) {
 						</div>
 					</label>
 					<input type="file" class="update-photo-input" id="image-special-${i}" data-gallery-index="${i}">
+					<p>adsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffs</p>
 				</div>`;
 		} else {
 			photoTemplate = `
