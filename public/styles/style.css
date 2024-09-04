@@ -1240,3 +1240,7 @@ input::placeholder {
 	color: white;
 	border: unset !important;
 }
+
+#footer {
+	margin-top: 136px;
+}
