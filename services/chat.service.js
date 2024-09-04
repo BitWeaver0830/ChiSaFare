@@ -123,9 +123,13 @@ async function getDestinatariPerUtenti(userID){
         }
         
         return result.sort((a, b) => {
-            if (a.latestMessageTime === null) return 1;
-            if (b.latestMessageTime === null) return -1;
-            return new Date(b.latestMessageTime) - new Date(a.latestMessageTime) > 0 ? 1 : -1;
+            const dateA = new Date(a.latestMessageTime);
+            const dateB = new Date(b.latestMessageTime);
+            
+            if (isNaN(dateA.getTime())) return 1; 
+            if (isNaN(dateB.getTime())) return -1;
+            
+            return dateB - dateA;
         });
     }  
     return [];
@@ -144,9 +148,13 @@ async function getDestinatariPerAziende(professionalID){
         }
 
         return result.sort((a, b) => {
-            if (a.latestMessageTime === null) return 1;
-            if (b.latestMessageTime === null) return -1;
-            return new Date(b.latestMessageTime) - new Date(a.latestMessageTime) > 0 ? 1 : -1;
+            const dateA = new Date(a.latestMessageTime);
+            const dateB = new Date(b.latestMessageTime);
+            
+            if (isNaN(dateA.getTime())) return 1; 
+            if (isNaN(dateB.getTime())) return -1;
+            
+            return dateB - dateA;
         });
     }  
     return [];
